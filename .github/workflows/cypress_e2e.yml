@@ -15,4 +15,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npx cypress run --browser chrome --record --group "pipeline-${{ github.run_id }}"
+      - run: npm run cy_run
