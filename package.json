@@ -1,0 +1,19 @@
+{
+  "name": "cypress-assignement",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy_run": "npx cypress run --record false --browser chrome",
+    "cy_run_record": "npx cypress run --browser chrome",
+    "cypress": "npx cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.1",
+    "cypress": "^12.13.0",
+    "typescript": "^5.0.4"
+  }
+}
