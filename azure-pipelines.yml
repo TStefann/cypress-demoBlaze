@@ -1,31 +1,27 @@
 trigger:
   branches:
     include:
-      - master  
+      - main  
 
 pr:
   branches:
     include:
-      - '*'  # Include all branches for pull requests
-
+      - '*' 
 pool:
   vmImage: 'ubuntu-latest'
 
-jobs:
-- job: RunCypressTests
+parallel: none
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm ci
+  displayName: 'Install Dependencies'
+
+- script: |
+    npx cypress run --browser chrome --headless
   displayName: 'Run Cypress Tests'
-  strategy:
-    maxParallel: 1 
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '16.x'
-    displayName: 'Install Node.js'
-
-  - script: |
-      npm ci
-    displayName: 'Install Dependencies'
-
-  - script: |
-      npx cypress run --browser chrome --headless
-    displayName: 'Run Cypress Tests'
