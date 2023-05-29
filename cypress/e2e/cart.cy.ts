@@ -5,12 +5,7 @@ import { HomePage } from "../pages/homepage.page";
 
 describe("Buy a product", () => {
   beforeEach(() => {
-    cy.visit("/");
-    HomePage.openLogInModal();
-    HomePage.logIn(user.username, user.password);
-    cy.get(HomePage.selectors.nameOfUser)
-      .should("be.visible")
-      .and("have.text", `Welcome ${user.username}`);
+    cy.login(user.username, user.password);
   });
 
   it("Buy a product", () => {

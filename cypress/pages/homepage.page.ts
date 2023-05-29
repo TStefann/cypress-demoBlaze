@@ -12,6 +12,7 @@ export class HomePage {
     monitorsCatergory: (category: string) => `[onclick="byCat('${category}')"]`,
     products: "[class='hrefch']",
     cartPage: "#cartur",
+    productBlock: ".card-block",
   };
 
   static openSignUpModal = () =>
@@ -69,4 +70,13 @@ export class HomePage {
 
   static goToCartPage = () =>
     cy.get(this.selectors.cartPage).should("be.visible").click();
+
+  static pricesAreDisplayedForEachProduct = () => {
+    cy.get(this.selectors.productBlock)
+      .find("h5")
+      .each($el => {
+        const price = $el.text();
+        expect(price).to.match(/^\$\d+/); //Regex that checks the price starts with '$' and is followed by digits
+      });
+  };
 }
