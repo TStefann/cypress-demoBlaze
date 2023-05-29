@@ -17,5 +17,4 @@ npm run cypress
 npm run cy_run
 npm run cy_run_record
 
-
 ```
