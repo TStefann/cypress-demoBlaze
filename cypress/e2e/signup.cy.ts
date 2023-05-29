@@ -13,8 +13,9 @@ describe("Sign in a new user", () => {
   });
 
   it("Signup new user successful", () => {
+    const timeStamp = Date.now();
     HomePage.openSignUpModal();
-    HomePage.typeUserName(randomUserName);
+    HomePage.typeUserName(randomUserName + timeStamp);
     HomePage.typePassword(randomPassword);
     HomePage.submitSignUp();
     cy.wait("@signUp").its("response.statusCode").should("eq", 200);
